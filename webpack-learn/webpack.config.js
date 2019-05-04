@@ -13,10 +13,18 @@ module.exports = {
     inline: true //实时刷新
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.json$/,
-        loader: 'json-loader'
+        test: /(\.jsx|\.js)$/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              "@babel/preset-env", "@babel/react"
+            ]
+          }
+        },
+        exclude: /node_modules/
       }
     ]
   }
