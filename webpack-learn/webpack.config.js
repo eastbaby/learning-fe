@@ -12,7 +12,8 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'build'), //告诉服务器从哪个目录中提供内容。只有在你想要提供静态文件时才需要
     historyApiFallback: true, // 不跳转
-    inline: true //实时刷新
+    inline: true, //实时刷新
+    hot: true // 配置热加载
   },
   module: {
     rules: [
@@ -45,6 +46,7 @@ module.exports = {
     new webpack.BannerPlugin('版权所有，翻版必究'),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "./app/index.tmpl.html") //new 一个这个插件的实例，并传入相关的参数
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin() //热加载插件
   ],
 }
